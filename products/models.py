@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 class products(models.Model):
+    class Meta:
+         verbose_name_plural ="products"
     LIVE=0
     DELETE=1
     title=models.CharField(max_length=50)
@@ -16,3 +18,8 @@ class products(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+
+class pro(models.Model):    
+     title=models.CharField(max_length=50)
+     price=models.FloatField()

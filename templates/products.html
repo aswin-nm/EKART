@@ -1,0 +1,40 @@
+{% load static %}
+{% load rotate %}
+<div class="small-container">
+ 
+    {% for pro in products|rotate:4 %}
+    <div class="row">
+        {% for premium in pro %}
+     
+        
+        <div class="col-4">
+            <a href="{% url 'detailedproduct' premium.id %}"> <img src="{{ premium.image.url }}"></a>
+            <h2>{{ premium.title }}</h2>
+         
+            <h3>RS.{{ premium.price }}</h3>
+            <p>${{ premium.description }}</p>
+        </div>
+
+   {% endfor %}
+     
+        
+    </div>
+    {% endfor %}
+   
+  
+    </div>
+    <div class="page-btn">
+        {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}">  <span> << </span></a> 
+          {% endif %}
+
+
+        {% for i in products.paginator.page_range %}
+      <a href="?page={{i}}">  <span>{{i}}</span></a> 
+        {% endfor %}
+
+        {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}">  <span> >> </span></a> 
+          {% endif %}
+    </div>
+</div>
