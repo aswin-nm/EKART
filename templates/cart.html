@@ -20,11 +20,17 @@
                 <ul id="MenuItems" style="max-height: 0px;">
                     <li><a href="{% url "products" %}">Home</a></li>
                     <li><a href="{% url "productslist" %}">Products</a></li>
-                    
+                  
+                    {% if not user.is_authenticated %}
                     <li><a href="{% url "customer_login" %}">Account</a></li>
+                    {% else %}
+                    <li><a href="{% url "signout" %}">logout</a></li>
                 </ul>
             </nav>
+
             <a href="{% url "cart" %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
+          
+            {% endif %}
             <img src="{% static  'images/menu.png'  %}" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
@@ -116,7 +122,7 @@
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="{% static 'images/logo-white.png' %}">
+                    <img src="{% static 'images/logo.png' %}">
                     <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
                     </p>
                 </div>
@@ -140,7 +146,7 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright 2020 - Samwit Adhikary</p>
+            <p class="copyright">Copyright 2024 - Ekart corporation</p>
         </div>
     </div>
 

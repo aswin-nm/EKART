@@ -8,8 +8,8 @@ class customer(models.Model):
     name=models.CharField(max_length=50)
    
     address=models.TextField()
-    user=models.OneToOneField(User,related_name='customer_profile',on_delete=models.CASCADE)
-    phone=models.IntegerField(default=0)
+    user=models.OneToOneField(User,related_name='customer_profile',on_delete=models.CASCADE,null=True)
+    phone=models.IntegerField(null=True)
     DELETE_CHOICES=((LIVE,'LIVE'),(DELETE,'DELETE'))
     delete_status=models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
     created_at=models.DateTimeField(auto_now_add=True)

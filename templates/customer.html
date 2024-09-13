@@ -21,44 +21,64 @@
                     <li><a href="{% url "products" %}">Home</a></li>
                     <li><a href="{% url "productslist" %}">Products</a></li>
                     
+                    {% if not user.is_authenticated %}
                     <li><a href="{% url "customer_login" %}">Account</a></li>
+
+                    {% else %}
+                    <li><a href="{% url "signout" %}">logout</a></li>
+                   
                 </ul>
             </nav>
             <a href="{% url "cart" %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
+            {% endif %}
             <img src="{% static  'images/menu.png'  %}" class="menu-icon" onclick="menutoggle()">
         </div>
     </div>
 
     <!-- Account Page -->
     <div class="account-page">
-        <div class="container">
-            <div class="row">
+        <div class="container" >
+            <div class="row" >
                 <div class="col-2">
-                    <img src="{% static  'images/image1.png'  %}" width="100%">
+                    <img src="{% static  'images/image1.png'  %}" width="100%" >
                 </div>
-                <div class="col-2">
-                    <div class="form-container">
+             
+                <div class="col-2" >
+                  
+                    <div class="form-container"  >
                         <div class="form-btn">
                             <span onclick="login()">Login</span>
                             <span onclick="register()">Register</span>
                             <hr id="Indicator">
                         </div>
-                        <form id="LoginForm">
-                            <input type="text" placeholder="Username">
-                            <input type="password" placeholder="Password">
-                            <button type="submit" class="btn">Login</button>
+                    
+                      
+                        <form id="LoginForm" method="post" enctype="multipart/form-data" >
+                            {% csrf_token %}
+                            <input type="text" name="Username" required placeholder="Username">
+                            <input type="password" name="password" required placeholder="Password">
+                            <button type="submit" class="btn" name="login">Login</button>
                             <a href="">Forget Password</a>
                         </form>
 
-                        <form id="RegForm">
-                            <input type="text" placeholder="Username">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
-                            <button type="submit" class="btn">Register</button>
+                        <form id="RegForm" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                            <input type="username"  maxlength="16" minlength="3" required name="username" placeholder="username">
+                            <input type="email" maxlength="26" minlength="3" required  name="email" placeholder="Email">
+                            <input type="password" maxlength="16" minlength="3" required  name="password" placeholder="Password">
+                            <input type="text" maxlength="26" minlength="3" required  name="address" placeholder="address">
+                            <input type="text" maxlength="16" minlength="3" required  name="Phone" placeholder="Phone">
+                            <button type="submit" class="btn" name="register">Register</button>
                         </form>
                     </div>
                 </div>
-            </div>
+              
+                {% if messages %}
+                {% for message in messages %}
+             
+                <div class="new"  ><h3 class="{{message.tags}}">{{ message }}</h3></div>
+                {% endfor %}
+                {% endif %}
         </div>
     </div>
 
@@ -76,9 +96,10 @@
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="{% static  'images/logo-white.png'  %}">
+                    <img src="{% static  'images/logo.png'  %}">
                     <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
                     </p>
+                    
                 </div>
                 <div class="footer-col-3">
                     <h3>Useful Links</h3>
@@ -100,7 +121,7 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright 2020 - Samwit Adhikary</p>
+            <p class="copyright">Copyright 2024 - Ekart corporation</p>
         </div>
     </div>
 
@@ -137,7 +158,17 @@
 
         }
     </script>
-
+    {% if register %}
+    <script>
+        register()
+    
+    </script>
+    {% else %}
+    <script>
+      login()
+    </script>
+    {% endif %}
+    
 
 
 </body></html>

@@ -7,12 +7,16 @@
         <ul id="MenuItems">
             <li><a href="{% url "products" %}">Home</a></li>
             <li><a href="{% url "productslist" %}">Products</a></li>
-            
+
+            {% if not user.is_authenticated %}
             <li><a href="{% url "customer_login" %}">Account</a></li>
-           
+            {% else %}
+            <li><a href="{% url "signout" %}">logout</a></li>
+            
 
         </ul>
     </nav>
     <a href="{% url "cart" %}"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
+    {% endif %}
     <img src="images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
 </div>

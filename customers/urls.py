@@ -6,5 +6,5 @@ urlpatterns = [
 
      
       path('customer_login/', views.customer_login,name="customer_login"),
-     
+      path('logout/', views.signout,name="signout"),
 ]

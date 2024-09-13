@@ -39,6 +39,7 @@ p{
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
+   
 }
 .row{
     display: flex;
@@ -62,7 +63,7 @@ p{
 .btn{
     display: inline-block;
     background: #ff523b;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 8px 30px;
     margin: 30px 0;
     border-radius: 30px;
@@ -382,7 +383,7 @@ th:last-child{
 
 /* Account page */
 .account-page{
-    padding: 50px 0;
+    padding: 0px 0;
     background: radial-gradient(#fff, #ffd6d6);
 }
 .form-container{
@@ -399,11 +400,40 @@ th:last-child{
 .form-container span{
     font-weight: bold;
     padding: 0 10px;
-    color: #555;
+    color: #7ab40e;
     cursor: pointer;
     width: 100px;
     display: inline-block;
 }
+.new{
+  font-weight: bold;
+  padding: 58px 246px;
+  padding-bottom: 58px;
+  color: #010f0a;
+  cursor: pointer;
+  width: 800px;
+  display: inline-block;
+  padding-bottom: 577px;
+  box-sizing: border-box;
+  -moz-box-align: center;
+  box-shadow: 0px 0px 20px 0px rgba(75, 175, 16, 0.1);
+  overflow: hidden;
+  margin: auto;
+  
+  position: absolute;
+  height: -289px;
+  margin-left: 680px;
+
+
+}
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+
+
 .form-btn{
     display: inline-block;
 }
@@ -411,7 +441,7 @@ th:last-child{
     max-width: 300px;
     padding: 0 20px;
     position: absolute;
-    top: 130px;
+    top: auto;
     transition: transform 1s;
 }
 form input{
@@ -435,6 +465,7 @@ form .btn:focus{
 }
 #RegForm{
     left: 0;
+    ;
 }
 form a{
     font-size: 12px;
