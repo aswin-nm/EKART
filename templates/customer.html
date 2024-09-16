@@ -35,6 +35,56 @@
         </div>
     </div>
 
+   
+        <div class="row">
+         
+          <form id="RegForm" method="post" enctype="multipart/form-data" style="width: 500px; padding-left: 10px; padding-top: 50px; padding-bottom: 50px;" >
+            {% csrf_token %}
+            <header><h2>Don't have an account? Signup Here</h2></header>
+                <input type="username"  maxlength="16" minlength="3" required name="username" placeholder="username">
+                <input type="email" maxlength="26" minlength="3" required  name="email" placeholder="Email">
+                <input type="password" maxlength="16" minlength="3" required  name="password" placeholder="Password">
+                <input type="text" maxlength="26" minlength="3" required  name="address" placeholder="address">
+                <input type="text" maxlength="16" minlength="3" required  name="Phone" placeholder="Phone">
+                <button type="submit" class="btn" name="register" style="height: 40px;">Register</button>
+            </form>
+            {% if user %}
+      new user with username {{user.username}} created successfully
+    {% endif %}
+   </p>
+
+   <p style="background-color: chocolate;">
+    {% if error_message %}
+     {{error_message}} 
+    {% endif %}
+   </p>
+
+</div>
+
+
+
+      <div class="login form">
+      
+        <form method="POST" enctype="multipart/form-data" style="width: 500px; padding-left: 240px; padding-top: 20px; padding-bottom: 30px; ;" >
+          {% csrf_token %}
+          <header><h3>Already have an account? Login Here</h3></header>
+    <label> <input name="username" type="text" required placeholder="username" style="width: 500px;">
+      <label> <input name="password" type="password" required placeholder="password" style="width: 500px;">
+  
+      <button type="submit" name="login" style="background-color: #ff523b; color: white; width: 500px; height: 40px; border-radius: 10px;" >login</button>
+     </form>
+          <a href="">Forget Password</a>
+          <p style="background-color: chocolate;">
+              {% if bug_message %}
+               {{bug_message}} 
+              {% endif %}
+             </p>
+            </div>
+
+
+
+{% comment "" %}
+
     <!-- Account Page -->
     <div class="account-page">
         <div class="container" >
@@ -82,9 +132,10 @@
         </div>
     </div>
 
+    {% endcomment %} 
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" >
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
@@ -124,7 +175,7 @@
             <p class="copyright">Copyright 2024 - Ekart corporation</p>
         </div>
     </div>
-
+    {% comment %} 
     <!-- javascript -->
 
     <script>
@@ -168,7 +219,7 @@
       login()
     </script>
     {% endif %}
-    
+    {% endcomment %} 
 
 
 </body></html>
