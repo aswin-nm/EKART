@@ -148,7 +148,7 @@ nav ul li a:hover {
 
 /* ================== SECTIONS ================== */
 .header {
-    background: linear-gradient(135deg, #fff 0%, #fef5f5 100%);
+    background: linear-gradient(135deg, #7B0000 0%, #B22222 60%, #8B0000 100%);
     position: relative;
     overflow: hidden;
     padding: 80px 0;
@@ -157,6 +157,14 @@ nav ul li a:hover {
 .header .row {
     margin-top: 40px;
     padding: 60px 0 80px 0;
+}
+
+.header .col-2 h1 {
+    color: #fff;
+}
+
+.header .col-2 p {
+    color: rgba(255, 255, 255, 0.82);
 }
 
 p {
