@@ -3,6 +3,7 @@ from . models import order,orderditem
 from products.models import products
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from customers.models import customer as Customer
 
 # Create your views here.
 @login_required(login_url='customer_login')
@@ -10,7 +11,7 @@ def cart(request):
     
         
         user=request.user
-        customer=user.customer_profile
+        customer, _ = Customer.objects.get_or_create(user=user, defaults={'name': user.username, 'address': 'Not provided'})
        
         cart_obj,created=order.objects.get_or_create(
             owner=customer,
@@ -24,7 +25,7 @@ def cart(request):
 def add_to_cart(request):
     if request.POST:
         user=request.user
-        customer=user.customer_profile
+        customer, _ = Customer.objects.get_or_create(user=user, defaults={'name': user.username, 'address': 'Not provided'})
         quantity=int(request.POST.get('quantity',0))
         product_id=request.POST.get('product_id')
         cart_obj,created=order.objects.get_or_create(
@@ -56,7 +57,7 @@ def checkout(request):
      if request.POST:
           try:
                user=request.user
-               customer=user.customer_profile
+               customer, _ = Customer.objects.get_or_create(user=user, defaults={'name': user.username, 'address': 'Not provided'})
                total=float(request.POST.get('total'))
                order_obj=order.objects.get(
                     owner=customer,
@@ -108,7 +109,7 @@ def checkout(request):
 @login_required(login_url='customer_login')
 def orders(request):
      user=request.user
-     customer=user.customer_profile
+     customer, _ = Customer.objects.get_or_create(user=user, defaults={'name': user.username, 'address': 'Not provided'})
      all_orders=order.objects.filter(owner=customer).exclude(order_status=order.CART_STAGE)
      context={'allorder':all_orders}
      

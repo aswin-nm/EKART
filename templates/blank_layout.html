@@ -14,11 +14,15 @@
 
 <body>
 
+    <!-- Sticky Navbar -->
+    <div class="navbar-wrapper" style="position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <div class="container">
+            {% include 'navmenu.html' %}  
+        </div>
+    </div>
+
     <div class="header">
         <div class="container">
-           
-    {% include 'navmenu.html' %}  
-    
              {% block banner %}
               {% include 'banner.html' %}
                 {% endblock banner %} 
