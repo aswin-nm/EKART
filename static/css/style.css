@@ -383,7 +383,7 @@ th:last-child{
 
 /* Account page */
 .account-page{
-    padding: 0px 0;
+    padding: 50px 0;
     background: radial-gradient(#fff, #ffd6d6);
 }
 .form-container{
@@ -529,4 +529,13 @@ form a{
     .cart-info p{
         display: none;
     }
+}
+
+/* Footer Link Styles */
+.footer ul li a {
+    color: #8a8a8a;
+    transition: color 0.3s;
+}
+.footer ul li a:hover {
+    color: #ff523b;
 }

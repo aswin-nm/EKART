@@ -14,7 +14,7 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <a href="index.html"><img src="{% static  'images/logo.png'  %}" alt="logo" width="125px"></a>
+                <a href="{% url 'products' %}"><img src="{% static  'images/logo.png'  %}" alt="logo" width="125px"></a>
             </div>
             <nav>
                 <ul id="MenuItems" style="max-height: 0px;">
@@ -35,51 +35,57 @@
         </div>
     </div>
 
-   
-        <div class="row">
+<div class="account-page">
+    <div class="container">
+        <div class="row" style="align-items: flex-start; margin-top: 50px; margin-bottom: 50px;">
          
-          <form id="RegForm" method="post" enctype="multipart/form-data" style="width: 500px; padding-left: 10px; padding-top: 50px; padding-bottom: 50px;" >
-            {% csrf_token %}
-            <header><h2>Don't have an account? Signup Here</h2></header>
-                <input type="username"  maxlength="16" minlength="3" required name="username" placeholder="username">
-                <input type="email" maxlength="26" minlength="3" required  name="email" placeholder="Email">
-                <input type="password" maxlength="16" minlength="3" required  name="password" placeholder="Password">
-                <input type="text" maxlength="26" minlength="3" required  name="address" placeholder="address">
-                <input type="text" maxlength="16" minlength="3" required  name="Phone" placeholder="Phone">
-                <button type="submit" class="btn" name="register" style="height: 40px;">Register</button>
-            </form>
-            {% if user %}
-      new user with username {{user.username}} created successfully
-    {% endif %}
-   </p>
-
-   <p style="background-color: chocolate;">
-    {% if error_message %}
-     {{error_message}} 
-    {% endif %}
-   </p>
-
-</div>
-
-
-
-      <div class="login form">
-      
-        <form method="POST" enctype="multipart/form-data" style="width: 500px; padding-left: 240px; padding-top: 20px; padding-bottom: 30px; ;" >
-          {% csrf_token %}
-          <header><h3>Already have an account? Login Here</h3></header>
-    <label> <input name="username" type="text" required placeholder="username" style="width: 500px;">
-      <label> <input name="password" type="password" required placeholder="password" style="width: 500px;">
-  
-      <button type="submit" name="login" style="background-color: #ff523b; color: white; width: 500px; height: 40px; border-radius: 10px;" >login</button>
-     </form>
-          <a href="">Forget Password</a>
-          <p style="background-color: chocolate;">
-              {% if bug_message %}
-               {{bug_message}} 
+          <div class="col-2" style="display: flex; justify-content: center; padding: 20px;">
+            <form id="RegForm" method="post" enctype="multipart/form-data" style="width: 100%; max-width: 400px; background: #fff; padding: 40px; box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);">
+              {% csrf_token %}
+              <div style="text-align: center; margin-bottom: 20px;">
+                  <h3 style="color: #555;">Don't have an account?</h3>
+                  <h2 style="color: #ff523b;">Signup Here</h2>
+              </div>
+              <input type="text" maxlength="16" minlength="3" required name="username" placeholder="Username">
+              <input type="email" maxlength="26" minlength="3" required name="email" placeholder="Email">
+              <input type="password" maxlength="16" minlength="3" required name="password" placeholder="Password">
+              <input type="text" maxlength="26" minlength="3" required name="address" placeholder="Address">
+              <input type="text" maxlength="16" minlength="3" required name="Phone" placeholder="Phone">
+              <button type="submit" class="btn" name="register">Register</button>
+              
+              {% if user %}
+              <p style="color: green; font-size: 14px; text-align: center;">New user with username {{user.username}} created successfully</p>
               {% endif %}
-             </p>
-            </div>
+              
+              {% if error_message %}
+              <p style="color: red; font-size: 14px; text-align: center;">{{error_message}}</p>
+              {% endif %}
+            </form>
+          </div>
+
+          <div class="col-2" style="display: flex; justify-content: center; padding: 20px;">
+            <form id="LoginForm" method="POST" enctype="multipart/form-data" style="width: 100%; max-width: 400px; background: #fff; padding: 40px; box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);">
+              {% csrf_token %}
+              <div style="text-align: center; margin-bottom: 20px;">
+                  <h3 style="color: #555;">Already have an account?</h3>
+                  <h2 style="color: #ff523b;">Login Here</h2>
+              </div>
+              <input name="username" type="text" required placeholder="Username">
+              <input name="password" type="password" required placeholder="Password">
+              <button type="submit" class="btn" name="login">Login</button>
+              <div style="text-align: center; margin-top: 10px;">
+                  <a href="">Forget Password?</a>
+              </div>
+              
+              {% if bug_message %}
+              <p style="color: red; font-size: 14px; text-align: center;">{{bug_message}}</p>
+              {% endif %}
+            </form>
+          </div>
+            
+        </div>
+    </div>
+</div>
 
 
 
@@ -155,19 +161,19 @@
                 <div class="footer-col-3">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
+                        <li><a href="{% url 'dummy' %}">Coupons</a></li>
+                        <li><a href="{% url 'dummy' %}">Blog Post</a></li>
+                        <li><a href="{% url 'dummy' %}">Return Policy</a></li>
+                        <li><a href="{% url 'dummy' %}">Join Affiliate</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-4">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>Youtube</li>
+                        <li><a href="{% url 'dummy' %}">Facebook</a></li>
+                        <li><a href="{% url 'dummy' %}">Twitter</a></li>
+                        <li><a href="{% url 'dummy' %}">Instagram</a></li>
+                        <li><a href="{% url 'dummy' %}">Youtube</a></li>
                     </ul>
                 </div>
             </div>

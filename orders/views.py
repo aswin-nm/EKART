@@ -2,8 +2,10 @@ from django.shortcuts import render,redirect,get_object_or_404
 from . models import order,orderditem
 from products.models import products
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='customer_login')
 def cart(request):
     
         
@@ -18,6 +20,7 @@ def cart(request):
 
         return render(request,'cart.html',context)
 
+@login_required(login_url='customer_login')
 def add_to_cart(request):
     if request.POST:
         user=request.user
@@ -41,12 +44,14 @@ def add_to_cart(request):
              ordered_item.save()    
         return redirect('cart')
     
+@login_required(login_url='customer_login')
 def delete_item(request,pk):
      item=orderditem.objects.get(pk=pk)
      if item:
           item.delete()   
      return redirect('cart')    
 
+@login_required(login_url='customer_login')
 def checkout(request):
      if request.POST:
           try:
@@ -100,6 +105,7 @@ def checkout(request):
     return redirect('cart')"""
 
 
+@login_required(login_url='customer_login')
 def orders(request):
      user=request.user
      customer=user.customer_profile

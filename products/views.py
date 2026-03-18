@@ -24,3 +24,6 @@ def detailed_product(request,pk):
     productpass=products.objects.get(pk=pk)
     contexts={'productpass':productpass}
     return render(request,'detailed_product.html',contexts)
+
+def dummy(request):
+    return render(request, 'dummy.html')

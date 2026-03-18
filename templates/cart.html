@@ -16,7 +16,7 @@
     <div class="container" style="   display: flex; flex-direction: column; min-height: 20vh;">
         <div class="navbar">
             <div class="logo">
-                <a href="index.html"><img src="{% static  'images/logo.png'  %}" alt="logo" width="125px"></a>
+                <a href="{% url 'products' %}"><img src="{% static  'images/logo.png'  %}" alt="logo" width="125px"></a>
             </div>
             <nav>
                 <ul id="MenuItems" style="max-height: 0px;">
@@ -138,19 +138,19 @@
                 <div class="footer-col-3">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
+                        <li><a href="{% url 'dummy' %}">Coupons</a></li>
+                        <li><a href="{% url 'dummy' %}">Blog Post</a></li>
+                        <li><a href="{% url 'dummy' %}">Return Policy</a></li>
+                        <li><a href="{% url 'dummy' %}">Join Affiliate</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-4">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>Youtube</li>
+                        <li><a href="{% url 'dummy' %}">Facebook</a></li>
+                        <li><a href="{% url 'dummy' %}">Twitter</a></li>
+                        <li><a href="{% url 'dummy' %}">Instagram</a></li>
+                        <li><a href="{% url 'dummy' %}">Youtube</a></li>
                     </ul>
                 </div>
             </div>
