@@ -403,3 +403,11 @@ db.sqlite3
 media/
 staticfiles/
 .env
+venv/
+__pycache__/
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+EKARTX/
+.env
